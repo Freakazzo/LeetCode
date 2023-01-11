@@ -20,15 +20,15 @@ public class IsBalanced {
 
     class Solution {
         public boolean isBalanced(TreeNode root) {
-            if (root == null) { return true; }
-            int left = depth(root.left);
-            int right = depth(root.right);
+            if (root == null)  return true;
+            int left = isBal(root.left);
+            int right = isBal(root.right);
             return Math.abs(left - right) <= 1 && isBalanced(root.left) && isBalanced(root.right);
         }
 
-        private int depth(TreeNode root) {
+        private int isBal(TreeNode root) {
             if (root == null) { return 0; }
-            return Math.max(depth(root.left), depth(root.right)) + 1;
+            return Math.max(isBal(root.left), isBal(root.right)) + 1;
         }
     }
 }
